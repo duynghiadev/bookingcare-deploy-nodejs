@@ -121,8 +121,8 @@ let saveDetailInforDoctor = (inputData) => {
           }
         }
 
-        // upsert (insert) to Doctor_infor table
-        let doctorInfor = await db.Doctor_infor.findOne({
+        // upsert (insert) to Doctor_Infor table
+        let doctorInfor = await db.Doctor_Infor.findOne({
           where: {
             doctorId: inputData.doctorId,
           },
@@ -143,7 +143,7 @@ let saveDetailInforDoctor = (inputData) => {
           await doctorInfor.save();
         } else {
           // create
-          await db.Doctor_infor.create({
+          await db.Doctor_Infor.create({
             doctorId: inputData.doctorId,
             priceId: inputData.selectedPrice,
             provinceId: inputData.selectedProvince,
@@ -193,7 +193,7 @@ let getDetailDoctorById = (inputId) => {
               attributes: ["valueEn", "valueVi"],
             },
             {
-              model: db.Doctor_infor,
+              model: db.Doctor_Infor,
               attributes: {
                 exclude: ["id", "doctorId"],
               },
@@ -333,7 +333,7 @@ let getExtraInforDoctorById = (idInput) => {
           errMessage: "Missing requires parameters",
         });
       } else {
-        let data = await db.Doctor_infor.findOne({
+        let data = await db.Doctor_Infor.findOne({
           where: {
             doctorId: idInput,
           },
@@ -400,7 +400,7 @@ let getProfileDoctorById = (inputId) => {
               attributes: ["valueEn", "valueVi"],
             },
             {
-              model: db.Doctor_infor,
+              model: db.Doctor_Infor,
               attributes: {
                 exclude: ["id", "doctorId"],
               },
